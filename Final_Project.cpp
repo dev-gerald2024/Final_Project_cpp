@@ -167,11 +167,28 @@ int main() {
             case 4:
                 Inventory.display_Product();
                 break;
-            case 5:
-                cout << "Thank you for using the Inventory System. Goodbye!\n";
-                return 0;
-            default:
-                cout << "Invalid choice. Try again.\n";
+                case 5: {
+                    char final_choice;
+                    bool valid_input = false;
+                    
+                    while (!valid_input) { // another loop para makabalik sa menu kung invalid input sya. 
+                        cout << "Are you sure you want to exit? (Y/N): ";
+                        cin >> final_choice;
+                        cin.ignore();
+                
+                        if (final_choice == 'Y' || final_choice == 'y') {
+                            cout << "Thank you for using the Inventory System. \n";
+                            return 0; // Exit
+                        } else if (final_choice == 'N' || final_choice == 'n') {
+                            valid_input = true; // mag stop ang loop at babalik sa menu (1-5)
+                        } else {
+                            cout << "\nInvalid input.";
+                        }
+                    }
+                
+                    break;
+                }
+                
         }
     }
 
